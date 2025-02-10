@@ -26,18 +26,15 @@ import inspect
 import os
 
 from absl import app
-
 from python_graphs import control_flow
 from python_graphs import control_flow_graphviz
 from python_graphs import control_flow_test_components as tc
 from python_graphs import program_utils
 
-
 def plot_control_flow_graph(fn, path):
   graph = control_flow.get_control_flow_graph(fn)
   source = program_utils.getsource(fn)
   control_flow_graphviz.render(graph, include_src=source, path=path)
-
 
 def main(argv) -> None:
   del argv  # Unused
@@ -51,7 +48,6 @@ def main(argv) -> None:
     path = f'out/{name}_cfg.png'
     plot_control_flow_graph(fn, path)
   print('Done. See the `out` directory for the results.')
-
 
 if __name__ == '__main__':
   app.run(main)
